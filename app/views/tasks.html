@@ -1,0 +1,12 @@
+<h1>Tasks</h1>
+
+<h2>New Task</h2>
+<form ng-submit="addTask(newTaskText)">
+  <input ng-model="newTaskText" />
+  <button type="submit">add message</button>
+</form>
+
+<h2>Current Tasks</h2>
+<div ng-repeat="task in tasks">
+  {{task.name}} - {{task.createdAt}} - {{task.isExpired()}}
+</div>
