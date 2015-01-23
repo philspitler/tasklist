@@ -7,6 +7,6 @@
 </form>
 
 <h2>Current Tasks</h2>
-<div ng-repeat="task in tasks">
+<div ng-repeat="task in tasks | expired">
   {{task.name}} - {{task.createdAt}} - {{task.isExpired()}}
 </div>

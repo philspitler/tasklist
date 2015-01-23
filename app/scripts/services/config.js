@@ -9,5 +9,6 @@
  */
 angular.module('tasklistApp')
   .value('config', {
-    firebaseAppUrl: 'https://brilliant-torch-8296.firebaseIO.com'
+    firebaseAppUrl: 'https://brilliant-torch-8296.firebaseIO.com',
+    taskExpiration: 604800000
   });
