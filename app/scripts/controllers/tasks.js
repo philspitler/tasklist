@@ -18,13 +18,10 @@ angular.module('tasklistApp')
   $scope.addTask = function (name) {
     $scope.tasks.$add({
       name: name,
-      createdAt: new Date().getTime()
+      createdAt: new Date().getTime(),
+      isComplete: false
     }).then(function () {
       $scope.newTaskText = '';
     });
-  };
-
-  $scope.isExpired = function (task) {
-    return 604800000 > task.createdAt;
   };
 });

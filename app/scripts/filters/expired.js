@@ -10,21 +10,28 @@
  */
 angular.module('tasklistApp')
   .filter('expired', ['config', function (config) {
-    return function (items) {
+    return function (items, isOpposite) {
       var filtered = [];
-      var timeNow = function () {
-        return new Date().getTime();
-      };
+      var timeNow = new Date().getTime();
+      var opposite = (isOpposite === undefined) ? false : isOpposite;
+
       var isExpired = function (task) {
-        console.log(timeNow() - task.createdAt);
-        return ((timeNow() - task.createdAt) >= config.taskExpiration);
+        return ((timeNow - task.createdAt) >= config.taskExpiration);
       };
 
-      angular.forEach(items, function (item) {
-        if (!isExpired(item)) {
-          filtered.push(item);
-        }
-      });
+      if (opposite) {
+        angular.forEach(items, function (item) {
+          if (!isExpired(item) && !item.isComplete) {
+            filtered.push(item);
+          }
+        });
+      } else {
+        angular.forEach(items, function (item) {
+          if (isExpired(item) || item.isComplete === true) {
+            filtered.push(item);
+          }
+        });
+      }
 
       return filtered;
     };
