@@ -24,4 +24,10 @@ angular.module('tasklistApp')
       $scope.newTaskText = '';
     });
   };
+
+  $scope.completeTask = function (task) {
+    task.isComplete = true;
+    $scope.tasks.$save(task);
+
+  };
 });

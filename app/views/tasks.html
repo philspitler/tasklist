@@ -1,17 +1,19 @@
 <h1>Tasks</h1>
 
-<h2>New Task</h2>
+<h2>New</h2>
 <form ng-submit="addTask(newTaskText)">
-  <input ng-model="newTaskText" />
-  <button type="submit">add task</button>
+  <div class="form-group">
+  <input ng-model="newTaskText" class="form-control" />
+  <button class="btn btn-default" type="submit">add task</button>
+  </div>
 </form>
 
-<h2>Current Tasks</h2>
-<div ng-repeat="task in tasks | expired:true">
-  {{task.name}} - {{task.createdAt}}
-</div>
-
-<h2>Expired Tasks</h2>
-<div ng-repeat="task in tasks | expired">
-  {{task.name}} - {{task.createdAt}}
-</div>
+<h2>Current</h2>
+<table class="table">
+<tr ng-repeat="task in tasks | expired:true">
+  <td>{{task.name}}</td>
+  <td style="text-align: right;">
+    <input type="checkbox" ng-click="completeTask(task)">
+  </td>
+</tr>
+</table>

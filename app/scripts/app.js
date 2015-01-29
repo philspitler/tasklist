@@ -20,10 +20,6 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
@@ -32,7 +28,11 @@ angular
         templateUrl: 'views/tasks.html',
         controller: 'TasksCtrl'
       })
+      .when('/tasks/archived', {
+        templateUrl: 'views/tasks-expired.html',
+        controller: 'TasksCtrl'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/tasks'
       });
   });
