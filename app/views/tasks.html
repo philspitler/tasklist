@@ -1,17 +1,27 @@
 <h1>Tasks</h1>
 
 <h2>New</h2>
-<form ng-submit="addTask(newTaskText)">
+<form ng-submit="addTask(newTaskText, newTaskPriority)">
   <div class="form-group">
-  <input ng-model="newTaskText" class="form-control" />
-  <button class="btn btn-default" type="submit">add task</button>
+    <label for="description">Description</label>
+    <input name="description" id="description" ng-model="newTaskText" class="form-control" />
   </div>
+  <div class="form-group">
+    <label for="priority">Priority</label>
+  <select id="priority" name="priority" ng-model="newTaskPriority" class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+  </div>
+  <button class="btn btn-default" type="submit">add task</button>
 </form>
 
 <h2>Current</h2>
 <table class="table">
 <tr ng-repeat="task in tasks | expired:true">
   <td>{{task.name}}</td>
+  <td>{{task.priority}}</td>
   <td style="text-align: right;">
     <input type="checkbox" ng-click="completeTask(task)">
   </td>

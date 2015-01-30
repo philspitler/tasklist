@@ -4,6 +4,7 @@
 <table class="table">
 <tr ng-repeat="task in tasks | expired">
   <td>{{task.name}}</td>
+  <td>{{task.priority}}</td>
   <td style="text-align: right;">{{task.isComplete ? "complete" : "expired"}}</td>
 </tr>
 </table>

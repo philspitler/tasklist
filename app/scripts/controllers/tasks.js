@@ -15,9 +15,10 @@ angular.module('tasklistApp')
   // download the data into a local array
   $scope.tasks = sync.$asArray();
 
-  $scope.addTask = function (name) {
+  $scope.addTask = function (name, priority) {
     $scope.tasks.$add({
       name: name,
+      priority: priority,
       createdAt: new Date().getTime(),
       isComplete: false
     }).then(function () {
