@@ -19,7 +19,7 @@
 
 <h2>Current</h2>
 <table class="table">
-<tr ng-repeat="task in tasks | expired:true">
+<tr ng-repeat="task in tasks | expired:false">
   <td>{{task.name}}</td>
   <td>{{task.priority}}</td>
   <td style="text-align: right;">

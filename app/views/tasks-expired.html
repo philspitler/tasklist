@@ -2,9 +2,14 @@
 
 <h2>Archived</h2>
 <table class="table">
-<tr ng-repeat="task in tasks | expired">
-  <td>{{task.name}}</td>
-  <td>{{task.priority}}</td>
-  <td style="text-align: right;">{{task.isComplete ? "complete" : "expired"}}</td>
-</tr>
+  <tr>
+    <th>Name</th>
+    <th>Priority</th>
+    <th style="text-align: right;">Status</th>
+  </tr>
+  <tr ng-repeat="task in tasks | expired:true">
+    <td>{{task.name}}</td>
+    <td>{{task.priority}}</td>
+    <td style="text-align: right;">{{task.isComplete ? "complete" : "expired"}}</td>
+  </tr>
 </table>

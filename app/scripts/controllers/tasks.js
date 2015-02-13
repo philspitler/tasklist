@@ -8,8 +8,8 @@
  * Controller of the tasklistApp
  */
 angular.module('tasklistApp')
-.controller('TasksCtrl', function ($scope, $window, $firebase) {
-  var ref = new $window.Firebase('https://brilliant-torch-8296.firebaseio.com/tasks/');
+.controller('TasksCtrl', function ($scope, $window, $firebase, config) {
+  var ref = new $window.Firebase(config.firebaseAppUrl + '/tasks/');
   // create an AngularFire reference to the data
   var sync = $firebase(ref);
   // download the data into a local array
