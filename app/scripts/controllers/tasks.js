@@ -23,6 +23,7 @@ angular.module('tasklistApp')
       isComplete: false
     }).then(function () {
       $scope.newTaskText = '';
+      $scope.newTaskPriority = '';
     });
   };
 
