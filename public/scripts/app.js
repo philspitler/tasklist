@@ -15,15 +15,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'firebase'
+    'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .when('/tasks', {
         templateUrl: 'views/tasks.html',
         controller: 'TasksCtrl'

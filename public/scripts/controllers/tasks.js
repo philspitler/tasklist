@@ -8,28 +8,31 @@
  * Controller of the tasklistApp
  */
 angular.module('tasklistApp')
-.controller('TasksCtrl', function ($scope, $window, $firebase, config) {
-  var ref = new $window.Firebase(config.firebaseAppUrl + '/tasks/');
-  // create an AngularFire reference to the data
-  var sync = $firebase(ref);
-  // download the data into a local array
-  $scope.tasks = sync.$asArray();
-
-  $scope.addTask = function (name, priority) {
-    $scope.tasks.$add({
-      name: name,
-      priority: priority,
-      createdAt: new Date().getTime(),
-      isComplete: false
-    }).then(function () {
-      $scope.newTaskText = '';
-      $scope.newTaskPriority = '';
+  .controller('TasksCtrl', function($scope, $window, $resource) {
+    var Task = $resource('/api/tasks/:id', null, {
+      'update': {
+        method: 'PUT'
+      }
     });
-  };
 
-  $scope.completeTask = function (task) {
-    task.isComplete = true;
-    $scope.tasks.$save(task);
+    $scope.tasks = Task.query(function(tasks) {
+      $scope.addTask = function(name, priority) {
+        var task = new Task({
+          name: name,
+          priority: priority,
+          createdAt: new Date().getTime(),
+          isComplete: false
+        });
+        task.$save();
+        tasks.push(task);
 
-  };
-});
+      };
+
+      $scope.completeTask = function(task) {
+        task.isComplete = true;
+        Task.update({
+          id: task._id
+        }, task);
+      };
+    });
+  });

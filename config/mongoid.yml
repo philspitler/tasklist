@@ -2,6 +2,6 @@ identity_map_enabled: true
 development:
   sessions:
     default:
-      database: mongoid
+      database: tasklist
       hosts:
         - 127.0.0.1:27017
