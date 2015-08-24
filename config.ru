@@ -1,10 +1,15 @@
 require 'auto_api'
-require './app'
+require './angular_app'
+require './react_backbone_app'
 
-map '/api' do #can use whatever path or add version or anything since this is modular
+map '/api' do
   run AutoApi::Base
 end
 
-map '/' do
-    run MyApp
+map '/angular' do
+    run AngularApp
+end
+
+map '/react-backbone' do
+    run ReactBackboneApp
 end
