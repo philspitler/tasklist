@@ -1,10 +1,10 @@
 require 'sinatra/base'
 
-class ReactBackboneApp < Sinatra::Base
-  set :public_folder, File.dirname(__FILE__) + '/react_backbone'
+class App < Sinatra::Base
+  set :public_folder, File.dirname(__FILE__) + '/public'
   # ... app code here ...
   get '/' do
-    send_file './react_backbone/index.html'
+    send_file './public/index.html'
   end
 
   # start the server if ruby file executed directly
